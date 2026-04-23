@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Johnson Environmental Technologies, Inc. — Environmental Sampling, Remediation & Utility Locating</title>
+<meta name="description" content="JET AZ delivers precision environmental sampling, soil gas and groundwater investigation, remediation, and private utility locating across the Southwest." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b1013;
+    --surface: #111a20;
+    --surface-2: #162128;
+    --line: rgba(255,255,255,0.08);
+    --line-strong: rgba(255,255,255,0.16);
+    --text: #e8edf1;
+    --text-dim: #9aa8b2;
+    --text-mute: #6b7680;
+    --accent: #f59e0b;
+    --accent-hover: #fbbf24;
+    --safety: #10b981;
+    --maxw: 1200px;
+    --radius: 4px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4 { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ───── Top bar ───── */
+  .topbar {
+    background: #07090b;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .topbar .container {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 24px;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .topbar a:hover { color: var(--accent); }
+  .topbar .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 10px; border-radius: 999px;
+    background: rgba(16,185,129,0.12); color: var(--safety);
+    font-weight: 500; font-size: 12px;
+  }
+  .topbar .pill::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--safety); box-shadow: 0 0 8px var(--safety);
+  }
+
+  /* ───── Header ───── */
+  header.main {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11,16,19,0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  header.main .container {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-mark {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--accent), #d97706);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 18px; color: #1a0f00;
+    border-radius: var(--radius);
+    letter-spacing: -0.04em;
+  }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .brand-text .name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+  .brand-text .sub { font-size: 11px; color: var(--text-mute); letter-spacing: 0.12em; text-transform: uppercase; }
+  nav.primary ul { list-style: none; display: flex; gap: 32px; }
+  nav.primary a {
+    font-size: 14px; font-weight: 500; color: var(--text-dim);
+    transition: color .2s;
+  }
+  nav.primary a:hover { color: var(--text); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 20px;
+    background: var(--accent); color: #1a0f00;
+    font-weight: 600; font-size: 14px;
+    border-radius: var(--radius);
+    transition: background .2s, transform .15s;
+    border: none; cursor: pointer;
+  }
+  .btn:hover { background: var(--accent-hover); }
+  .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line-strong); }
+  .btn.ghost:hover { background: var(--surface); border-color: var(--text-dim); }
+  .menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 22px; cursor: pointer; }
+
+  /* ───── Hero ───── */
+  .hero {
+    position: relative; min-height: 88vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero .bg {
+    position: absolute; inset: 0;
+    background-image: url('https://nebula.wsimg.com/b9569659b4d1c01341835393f7b00ef6?AccessKeyId=D9E99A4ECBE6BC69BBAC&alloworigin=1');
+    background-size: cover; background-position: center;
+    filter: saturate(0.85) contrast(1.05);
+  }
+  .hero .overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, rgba(7,10,12,0.92) 0%, rgba(7,10,12,0.72) 45%, rgba(7,10,12,0.35) 100%),
+      linear-gradient(180deg, rgba(7,10,12,0.2) 0%, rgba(11,16,19,1) 100%);
+  }
+  .hero .container { position: relative; z-index: 2; padding-top: 80px; padding-bottom: 100px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 32px; height: 1px; background: var(--accent);
+  }
+  .hero h1 {
+    font-size: clamp(36px, 5.4vw, 68px);
+    max-width: 880px;
+    margin-bottom: 24px;
+  }
+  .hero h1 .em { color: var(--accent); }
+  .hero p.lede {
+    font-size: clamp(16px, 1.35vw, 19px);
+    color: var(--text-dim);
+    max-width: 640px;
+    margin-bottom: 40px;
+    line-height: 1.65;
+  }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* credibility strip */
+  .strip {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+  .strip .container {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    padding: 28px 24px;
+    gap: 24px;
+  }
+  .strip .item { display: flex; flex-direction: column; gap: 4px; }
+  .strip .num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px; font-weight: 700; color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .strip .lab { font-size: 12px; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* ───── Section basics ───── */
+  section.block { padding: 100px 0; border-bottom: 1px solid var(--line); }
+  .section-head { margin-bottom: 56px; max-width: 760px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .section-head h2 {
+    font-size: clamp(28px, 3.2vw, 42px);
+    margin-bottom: 16px;
+  }
+  .section-head p { color: var(--text-dim); font-size: 17px; line-height: 1.65; }
+
+  /* ───── Capabilities (3-col) ───── */
+  .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .cap {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px;
+    display: flex; flex-direction: column;
+    transition: border-color .2s, transform .2s;
+  }
+  .cap:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .cap .icon {
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(245,158,11,0.1); color: var(--accent);
+    border-radius: var(--radius);
+    margin-bottom: 20px;
+  }
+  .cap h3 { font-size: 20px; margin-bottom: 10px; }
+  .cap p { color: var(--text-dim); font-size: 15px; margin-bottom: 20px; flex-grow: 1; }
+  .cap ul { list-style: none; font-size: 14px; color: var(--text-dim); }
+  .cap ul li {
+    padding: 8px 0; border-top: 1px solid var(--line);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .cap ul li::before {
+    content: ''; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ───── Services (detailed) ───── */
+  .services-wrap { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: start; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .svc {
+    background: var(--surface);
+    padding: 24px;
+  }
+  .svc h4 {
+    font-size: 15px; font-weight: 600; color: var(--text);
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .svc h4 span.num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px; color: var(--accent); font-weight: 500;
+  }
+  .svc p { color: var(--text-dim); font-size: 13.5px; line-height: 1.55; }
+
+  /* ───── Why / feature split ───── */
+  .split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+  .split .image-card {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    aspect-ratio: 4/3;
+    background-image: url('https://nebula.wsimg.com/b9569659b4d1c01341835393f7b00ef6?AccessKeyId=D9E99A4ECBE6BC69BBAC&alloworigin=1');
+    background-size: cover; background-position: center;
+  }
+  .split .image-card::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(7,10,12,0.85) 100%);
+  }
+  .split .image-card .tag {
+    position: absolute; bottom: 24px; left: 24px; z-index: 2;
+    background: rgba(11,16,19,0.85); border: 1px solid var(--line-strong);
+    padding: 10px 14px; border-radius: var(--radius);
+    font-size: 13px; color: var(--text);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .split .image-card .tag::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--safety);
+    box-shadow: 0 0 8px var(--safety);
+  }
+  .feature-list { list-style: none; margin-top: 32px; }
+  .feature-list li {
+    display: grid; grid-template-columns: 36px 1fr; gap: 16px;
+    padding: 20px 0; border-top: 1px solid var(--line);
+  }
+  .feature-list li:last-child { border-bottom: 1px solid var(--line); }
+  .feature-list .fi {
+    width: 36px; height: 36px; border-radius: var(--radius);
+    background: rgba(245,158,11,0.1); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .feature-list h4 { font-size: 16px; margin-bottom: 4px; }
+  .feature-list p { color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+
+  /* ───── CTA band ───── */
+  .cta-band {
+    background:
+      linear-gradient(90deg, rgba(7,10,12,0.9), rgba(11,16,19,0.7)),
+      url('https://nebula.wsimg.com/b9569659b4d1c01341835393f7b00ef6?AccessKeyId=D9E99A4ECBE6BC69BBAC&alloworigin=1');
+    background-size: cover; background-position: center;
+    padding: 80px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .cta-band .container {
+    display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+  }
+  .cta-band h2 { font-size: clamp(26px, 3vw, 36px); max-width: 640px; }
+  .cta-band p { color: var(--text-dim); margin-top: 10px; max-width: 560px; }
+
+  /* ───── Contact ───── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 40px;
+  }
+  .contact-card h3 { font-size: 22px; margin-bottom: 24px; }
+  .info-row { display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
+  .info-row:first-of-type { border-top: none; padding-top: 0; }
+  .info-row .ico {
+    width: 36px; height: 36px; border-radius: var(--radius);
+    background: rgba(245,158,11,0.1); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .info-row .label { font-size: 12px; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+  .info-row .val { font-size: 15px; color: var(--text); }
+  .info-row .val a:hover { color: var(--accent); }
+
+  form .row { margin-bottom: 18px; }
+  form label { display: block; font-size: 12px; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  form input, form select, form textarea {
+    width: 100%; padding: 12px 14px;
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: inherit; font-size: 15px;
+    transition: border-color .2s;
+  }
+  form input:focus, form select:focus, form textarea:focus {
+    outline: none; border-color: var(--accent);
+  }
+  form textarea { resize: vertical; min-height: 110px; }
+  form .btn { width: 100%; justify-content: center; padding: 14px; font-size: 15px; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* ───── Footer ───── */
+  footer {
+    background: #07090b;
+    padding: 48px 0 24px;
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  footer .fcols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+  footer h5 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text); margin-bottom: 16px; }
+  footer ul { list-style: none; }
+  footer ul li { padding: 5px 0; }
+  footer a:hover { color: var(--accent); }
+  footer .bar {
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: var(--text-mute);
+    flex-wrap: wrap; gap: 12px;
+  }
+
+  /* ───── Responsive ───── */
+  @media (max-width: 980px) {
+    .strip .container { grid-template-columns: repeat(2, 1fr); }
+    .cap-grid { grid-template-columns: 1fr; }
+    .services-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .split { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    footer .fcols { grid-template-columns: 1fr 1fr; gap: 32px; }
+    nav.primary { display: none; }
+    .menu-toggle { display: inline-flex; }
+    nav.primary.open {
+      display: block; position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--surface); border-bottom: 1px solid var(--line);
+      padding: 16px 24px;
+    }
+    nav.primary.open ul { flex-direction: column; gap: 16px; }
+    header.main .container { position: relative; }
+    .hero { min-height: 70vh; }
+    section.block { padding: 70px 0; }
+  }
+  @media (max-width: 560px) {
+    .form-row-2 { grid-template-columns: 1fr; }
+    footer .fcols { grid-template-columns: 1fr; }
+    .topbar .container { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <span class="pill">Fully Licensed &amp; Insured · OSHA 40-hr HAZWOPER</span>
+    <div>
+      <a href="tel:+16025551234">Call (602) 555-1234</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:info@getjetaz.com">info@getjetaz.com</a>
+    </div>
+  </div>
+</div>
+
+<header class="main">
+  <div class="container">
+    <a href="#" class="brand">
+      <div class="brand-mark">JET</div>
+      <div class="brand-text">
+        <span class="name">Johnson Environmental Technologies</span>
+        <span class="sub">Inc. · Arizona</span>
+      </div>
+    </a>
+    <nav class="primary" id="nav">
+      <ul>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#equipment">Equipment</a></li>
+        <li><a href="#why">Qualifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="btn" style="margin-left:16px;">Request a Quote</a>
+    <button class="menu-toggle" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="bg"></div>
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="hero-eyebrow">Environmental Services · Since 1998</div>
+    <h1>Precision environmental investigation and <span class="em">remediation</span> for complex sites.</h1>
+    <p class="lede">
+      JET AZ delivers subsurface sampling, vapor intrusion surveys, groundwater investigation,
+      private utility locating, and HAZMAT response across Arizona and the Southwest —
+      with mobile lab capability and limited-access equipment for sites others can&rsquo;t reach.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn">Request Project Consultation →</a>
+      <a href="#capabilities" class="btn ghost">Explore Capabilities</a>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="container">
+    <div class="item"><span class="num">25+</span><span class="lab">Years of Fieldwork</span></div>
+    <div class="item"><span class="num">2,400+</span><span class="lab">Projects Delivered</span></div>
+    <div class="item"><span class="num">48 hr</span><span class="lab">HAZMAT Response</span></div>
+    <div class="item"><span class="num">EPA</span><span class="lab">Phase II Qualified</span></div>
+  </div>
+</div>
+
+<section class="block" id="capabilities">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Core Capabilities</span>
+      <h2>Three disciplines, one accountable field team.</h2>
+      <p>
+        We specialize in projects with limited access, sensitive site conditions, and non-invasive
+        technique requirements — bringing the right equipment and the right crew the first time.
+      </p>
+    </div>
+
+    <div class="cap-grid">
+      <div class="cap">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg>
+        </div>
+        <h3>Soil &amp; Utility Locating</h3>
+        <p>Non-invasive subsurface locating for projects requiring surgical precision — from limited-access basements to active industrial sites.</p>
+        <ul>
+          <li>Private utility locating</li>
+          <li>Limited-access areas</li>
+          <li>Sensitive site conditions</li>
+          <li>Non-invasive techniques</li>
+        </ul>
+      </div>
+
+      <div class="cap">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6l-4 8a3 3 0 0 0 2.6 4.5h8.8A3 3 0 0 0 19 16l-4-8V2"/><path d="M7 2h10"/></svg>
+        </div>
+        <h3>Environmental Sampling</h3>
+        <p>Full-matrix sampling for soil, soil gas, and groundwater — paired with on-site mobile laboratory services for same-day turnaround.</p>
+        <ul>
+          <li>DPT / Geoprobe (limited access)</li>
+          <li>Mobile laboratory services</li>
+          <li>Vapor intrusion &amp; GORE surveys</li>
+          <li>Tier II landfill surveys</li>
+        </ul>
+      </div>
+
+      <div class="cap">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4.5 4 1 6L12 16l-5.5 3 1-6L3 9l6-1 3-6z"/></svg>
+        </div>
+        <h3>Remediation &amp; Response</h3>
+        <p>Targeted remediation approaches — from microbial and oxygen injection to high-pressure delivery — plus rapid HAZMAT response.</p>
+        <ul>
+          <li>Microbial &amp; oxygenated injection</li>
+          <li>Ozone &amp; air sparging</li>
+          <li>HAZMAT response</li>
+          <li>EPA Phase II assessments</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="services" style="background: var(--surface-2);">
+  <div class="container">
+    <div class="services-wrap">
+      <div>
+        <span class="eyebrow">Services Catalog</span>
+        <h2 style="font-size: clamp(26px, 2.8vw, 38px); margin-bottom: 20px;">Everything from a hand sample to a full-scale injection program.</h2>
+        <p style="color: var(--text-dim); font-size: 16px;">
+          Whether the scope calls for a single Phase II pass or a multi-phase remediation effort,
+          our crews mobilize with the right hardware, documentation, and safety posture.
+        </p>
+        <a href="#contact" class="btn" style="margin-top: 28px;">Discuss a Project →</a>
+      </div>
+
+      <div class="services-grid">
+        <div class="svc"><h4><span class="num">01</span> Sampling Matrices</h4><p>Soil, soil gas, and groundwater sampling across residential, commercial, and industrial sites.</p></div>
+        <div class="svc"><h4><span class="num">02</span> Mobile Laboratory</h4><p>On-site analysis for accelerated data turnaround and adaptive field decisions.</p></div>
+        <div class="svc"><h4><span class="num">03</span> Vapor Intrusion Surveys</h4><p>GORE-module and active sub-slab surveys meeting regulatory guidance.</p></div>
+        <div class="svc"><h4><span class="num">04</span> Hydraulic Conductivity</h4><p>Aquifer characterization to inform remediation design and flow modeling.</p></div>
+        <div class="svc"><h4><span class="num">05</span> Air Sparging</h4><p>In-situ injection for volatile contaminant removal from groundwater.</p></div>
+        <div class="svc"><h4><span class="num">06</span> High-Pressure Injection</h4><p>Microbial and chemical delivery with targeted radius-of-influence control.</p></div>
+        <div class="svc"><h4><span class="num">07</span> Hand Sampling</h4><p>Surgical collection for sensitive or access-constrained site conditions.</p></div>
+        <div class="svc"><h4><span class="num">08</span> Concrete Coring</h4><p>Sub-slab access for soil gas, DPT probes, and vapor pin installation.</p></div>
+        <div class="svc"><h4><span class="num">09</span> Private Utility Locating</h4><p>Non-destructive subsurface mapping prior to drilling, coring, or excavation.</p></div>
+        <div class="svc"><h4><span class="num">10</span> Environmental Excavation</h4><p>Contained removal and handling of contaminated media per state guidance.</p></div>
+        <div class="svc"><h4><span class="num">11</span> Air Quality Assessments</h4><p>Indoor and ambient screening — particulate, VOC, and combustion-byproduct.</p></div>
+        <div class="svc"><h4><span class="num">12</span> HAZMAT Response</h4><p>Rapid mobilization for spills, releases, and emergency site containment.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="why">
+  <div class="container">
+    <div class="split">
+      <div class="image-card">
+        <div class="tag">Active project · Maricopa County</div>
+      </div>
+      <div>
+        <span class="eyebrow">Why Clients Choose JET AZ</span>
+        <h2 style="font-size: clamp(28px, 3.2vw, 42px); margin-bottom: 16px;">The details that de-risk your project.</h2>
+        <p style="color: var(--text-dim);">We know regulatory work doesn&rsquo;t reward improvisation. Every crew is trained, every chain-of-custody is audited, and every site leaves with documentation that stands up to scrutiny.</p>
+
+        <ul class="feature-list">
+          <li>
+            <div class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+            <div><h4>Defensible Data</h4><p>Full QA/QC chain-of-custody, documented calibration, and audit-ready sample reporting.</p></div>
+          </li>
+          <li>
+            <div class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11V5l8-3 8 3v6c0 6.5-8 11-8 11z"/></svg></div>
+            <div><h4>Safety-First Crews</h4><p>OSHA 40-hour HAZWOPER certified field staff. Site-specific health &amp; safety plans on every mobilization.</p></div>
+          </li>
+          <li>
+            <div class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div><h4>Mobile Lab Turnaround</h4><p>On-site analytical capability shortens decision cycles from weeks to hours on adaptive investigations.</p></div>
+          </li>
+          <li>
+            <div class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+            <div><h4>Limited-Access Equipment</h4><p>Compact DPT rigs and hand-portable tooling for basements, garages, and tight industrial footprints.</p></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="equipment" style="background: var(--surface-2); padding: 80px 0;">
+  <div class="container">
+    <div class="section-head" style="text-align: center; margin-left: auto; margin-right: auto;">
+      <span class="eyebrow">Fleet &amp; Equipment</span>
+      <h2>Purpose-built for sites where standard rigs can&rsquo;t work.</h2>
+    </div>
+    <div class="cap-grid">
+      <div class="cap">
+        <h3 style="margin-bottom: 12px;">Direct-Push Technology</h3>
+        <p style="margin-bottom: 0;">Geoprobe-equivalent rigs in truck, track, and limited-access configurations — suitable for indoor, overhead-restricted, and slope-constrained sites.</p>
+      </div>
+      <div class="cap">
+        <h3 style="margin-bottom: 12px;">Mobile Analytical</h3>
+        <p style="margin-bottom: 0;">On-site GC/MS and field-portable instrumentation for real-time VOC, methane, and soil-vapor characterization.</p>
+      </div>
+      <div class="cap">
+        <h3 style="margin-bottom: 12px;">Injection &amp; Delivery</h3>
+        <p style="margin-bottom: 0;">High-pressure and low-pressure injection systems for microbial, oxygen, ozone, and chemical amendment delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <div>
+      <h2>Have a site that needs eyes on the ground?</h2>
+      <p>Send us the scope — we&rsquo;ll return a schedule, crew plan, and quote within two business days.</p>
+    </div>
+    <a href="#contact" class="btn">Start a Project →</a>
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Get in Touch</span>
+      <h2>Let&rsquo;s scope your project.</h2>
+      <p>Whether it&rsquo;s a Phase II assessment, vapor intrusion study, or emergency response — reach out and we&rsquo;ll mobilize a team lead to walk through the scope with you.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Contact Information</h3>
+        <div class="info-row">
+          <div class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6A2 2 0 0 1 22 16.9z"/></svg></div>
+          <div><div class="label">Phone</div><div class="val"><a href="tel:+16025551234">(602) 555-1234</a></div></div>
+        </div>
+        <div class="info-row">
+          <div class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="label">Email</div><div class="val"><a href="mailto:info@getjetaz.com">info@getjetaz.com</a></div></div>
+        </div>
+        <div class="info-row">
+          <div class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="label">Service Area</div><div class="val">Arizona &amp; the Southwest U.S.</div></div>
+        </div>
+        <div class="info-row">
+          <div class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><div class="label">Hours</div><div class="val">Mon–Fri 7am–5pm · 24/7 Emergency Response</div></div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h3>Project Inquiry</h3>
+        <form onsubmit="event.preventDefault(); alert('Thanks — your message would be sent to info@getjetaz.com in production.');">
+          <div class="form-row-2">
+            <div class="row"><label>Name</label><input type="text" required placeholder="Full name" /></div>
+            <div class="row"><label>Company</label><input type="text" placeholder="Organization" /></div>
+          </div>
+          <div class="form-row-2">
+            <div class="row"><label>Email</label><input type="email" required placeholder="you@company.com" /></div>
+            <div class="row"><label>Phone</label><input type="tel" placeholder="(555) 123-4567" /></div>
+          </div>
+          <div class="row">
+            <label>Project Type</label>
+            <select>
+              <option>Phase II Assessment</option>
+              <option>Vapor Intrusion Survey</option>
+              <option>Soil / Groundwater Sampling</option>
+              <option>Remediation / Injection</option>
+              <option>Private Utility Locating</option>
+              <option>HAZMAT Response</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="row"><label>Project Details</label><textarea placeholder="Site location, scope, timeline, and any known conditions…"></textarea></div>
+          <button type="submit" class="btn">Send Inquiry →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="fcols">
+      <div>
+        <div class="brand" style="margin-bottom: 16px;">
+          <div class="brand-mark">JET</div>
+          <div class="brand-text">
+            <span class="name" style="color: var(--text);">Johnson Environmental Technologies</span>
+            <span class="sub">Inc.</span>
+          </div>
+        </div>
+        <p style="max-width: 360px;">Full-service environmental investigation, remediation, and private utility locating serving Arizona and the Southwest since 1998.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Sampling</a></li>
+          <li><a href="#services">Mobile Lab</a></li>
+          <li><a href="#services">Remediation</a></li>
+          <li><a href="#services">Utility Locating</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#why">Qualifications</a></li>
+          <li><a href="#equipment">Equipment</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+16025551234">(602) 555-1234</a></li>
+          <li><a href="mailto:info@getjetaz.com">info@getjetaz.com</a></li>
+          <li>Arizona, USA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bar">
+      <span>© <span id="yr"></span> Johnson Environmental Technologies, Inc. All rights reserved.</span>
+      <span>Licensed · Insured · OSHA HAZWOPER Certified</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
